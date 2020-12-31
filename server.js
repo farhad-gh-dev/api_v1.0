@@ -5,11 +5,17 @@ const server = express();
 
 //IMPORT ROUTES
 const indexRoute = require("./routes/index");
+const authRoute = require("./routes/auth/index");
 
 const PORT = process.env.PORT || 3000;
 
+//MIDDLEWARE
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
+
 //USE ROUTES
 server.use("/", indexRoute);
+server.use("/auth", authRoute);
 
 //DATABASE SETUP
 const uri = process.env.DB_ADDRESS;
@@ -19,9 +25,9 @@ mongoose.connect(uri, {
 });
 const db_connection = mongoose.connection;
 db_connection.once("open", () => {
-  console.log("connected to database...");
+  console.log("\x1b[36m" + "connected to database...");
 });
 
 server.listen(PORT, () => {
-  console.log("server is started on port " + PORT + "...");
+  console.log("\x1b[33m" + `server is running on port ${PORT}...`);
 });
