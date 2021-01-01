@@ -6,6 +6,7 @@ const server = express();
 //IMPORT ROUTES
 const indexRoute = require("./routes/index");
 const authRoute = require("./routes/auth/index");
+const testRoute = require("./routes/testRoute");
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,6 +17,7 @@ server.use(express.urlencoded({ extended: false }));
 //USE ROUTES
 server.use("/", indexRoute);
 server.use("/auth", authRoute);
+server.use("/test", testRoute);
 
 //DATABASE SETUP
 const uri = process.env.DB_ADDRESS;
