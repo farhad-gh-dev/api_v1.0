@@ -6,7 +6,6 @@ const server = express();
 //IMPORT ROUTES
 const indexRoute = require("./routes/index");
 const authRoute = require("./routes/auth/index");
-const testRoute = require("./routes/testRoute");
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +16,6 @@ server.use(express.urlencoded({ extended: false }));
 //USE ROUTES
 server.use("/", indexRoute);
 server.use("/auth", authRoute);
-server.use("/test", testRoute);
 
 //DATABASE SETUP
 const uri = process.env.DB_ADDRESS;
@@ -27,9 +25,9 @@ mongoose.connect(uri, {
 });
 const db_connection = mongoose.connection;
 db_connection.once("open", () => {
-  console.log("\x1b[36m" + "connected to database...");
+  console.log("\x1b[36m" + "connected to database..." + "\x1b[0m");
 });
 
 server.listen(PORT, () => {
-  console.log("\x1b[33m" + `server is running on port ${PORT}...`);
+  console.log("\x1b[33m" + `server is running on port ${PORT}...` + "\x1b[0m");
 });
