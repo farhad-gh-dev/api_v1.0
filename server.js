@@ -6,8 +6,9 @@ const server = express();
 //IMPORT ROUTES
 const indexRoute = require("./routes/index");
 const authRoute = require("./routes/auth/index");
+const YummyMenuRoute = require("./routes/yummyMenu/index");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 //MIDDLEWARE
 server.use(express.json());
@@ -16,6 +17,7 @@ server.use(express.urlencoded({ extended: false }));
 //USE ROUTES
 server.use("/", indexRoute);
 server.use("/auth", authRoute);
+server.use("/yummy-menu", YummyMenuRoute);
 
 //DATABASE SETUP
 const uri = process.env.DB_ADDRESS;
