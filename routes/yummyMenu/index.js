@@ -1,14 +1,17 @@
 const express = require("express");
 const route = express.Router();
 
+const registerMenu = require("./registerMenu");
+
 // const registerUser = require("./register");
 // const loginUser = require("./login");
 
-route.post("/", (req, res) => {
-  res.send("yummy-menu...");
+route.get("/:restaurant_name", (req, res) => {
+  res.json({
+    restaurant_name: req.params.restaurant_name,
+    query: req.query,
+  });
 });
-// route.get("/", loginUser);
-// route.get("/", loginUser);
-// route.get("/drink", loginUser);
+route.post("/", registerMenu);
 
 module.exports = route;
