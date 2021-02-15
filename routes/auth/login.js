@@ -22,7 +22,7 @@ const loginUser = async (req, res) => {
     expiresIn: "48h",
   });
 
-  res.status(201).json({ message: "User Registered.", token });
+  res.status(201).json({ message: "User logged in.", token });
 };
 
 module.exports = loginUser;

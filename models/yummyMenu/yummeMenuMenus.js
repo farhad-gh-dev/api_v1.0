@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const yummyMenuMenusModel = new mongoose.Schema({
   restaurantName: {
     type: String,
-    min: 6,
+    min: 4,
     max: 65,
     required: true,
   },
@@ -21,6 +21,10 @@ const yummyMenuMenusModel = new mongoose.Schema({
         max: 200,
         required: true,
       },
+      price: {
+        type: Number,
+        required: true,
+      },
       image: {
         type: String,
         max: 150,
@@ -28,13 +32,13 @@ const yummyMenuMenusModel = new mongoose.Schema({
       },
       type: {
         type: String,
-        min: 4,
+        min: 3,
         max: 40,
         required: true,
       },
       category: {
         type: String,
-        min: 4,
+        min: 3,
         max: 40,
         required: true,
       },

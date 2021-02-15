@@ -8,8 +8,8 @@ const registerMenu = async (req, res) => {
   if (error) return res.status(403).json({ message: error.message });
 
   const newMenu = new MenuModel({
-    restaurantName: req.body.restaurant_name,
-    restaurantMenu: req.body.restaurant_menu,
+    restaurantName: req.body.restaurantName,
+    restaurantMenu: req.body.restaurantMenu,
   });
 
   try {
