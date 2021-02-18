@@ -12,7 +12,7 @@ const register = (data) => {
 
 const login = (data) => {
   const schema = joi.object({
-    email: joi.string().min(6).max(65).email().required(),
+    username: joi.string().min(6).max(65).required(),
     password: joi.string().min(8).required(),
   });
 

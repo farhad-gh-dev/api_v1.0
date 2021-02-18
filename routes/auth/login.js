@@ -9,7 +9,12 @@ const loginUser = async (req, res) => {
   if (error) return res.status(400).json({ message: error.message });
 
   //CHECK IF USER EXIST
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne(
+    req.body.username.includes("@")
+      ? { email: req.body.username }
+      : { username: req.body.username }
+  );
+
   if (!user) return res.status(401).json({ message: "Authentication Failed." });
 
   //CHECK IF PASSWORD IS CORRECT
