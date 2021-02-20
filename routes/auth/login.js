@@ -10,9 +10,9 @@ const loginUser = async (req, res) => {
 
   //CHECK IF USER EXIST
   const user = await User.findOne(
-    req.body.username.includes("@")
-      ? { email: req.body.username }
-      : { username: req.body.username }
+    req.body.usernameOrEmail.includes("@")
+      ? { email: req.body.usernameOrEmail.toLowerCase() }
+      : { username: req.body.usernameOrEmail.toLowerCase() }
   );
 
   if (!user) return res.status(401).json({ message: "Authentication Failed." });

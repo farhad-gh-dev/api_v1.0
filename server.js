@@ -26,6 +26,7 @@ server.use("/yummy-menu", YummyMenuRoute);
 const uri = process.env.DB_ADDRESS;
 mongoose.connect(uri, {
   useUnifiedTopology: true,
+  useCreateIndex: true,
   useNewUrlParser: true,
 });
 const db_connection = mongoose.connection;

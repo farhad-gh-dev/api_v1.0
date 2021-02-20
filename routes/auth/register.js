@@ -9,11 +9,13 @@ const registerUser = async (req, res) => {
   if (error) return res.status(400).json({ message: error.message });
 
   //CHECK IF USER EXIST
-  const userExist = await User.findOne({ email: req.body.email });
+  const userExist = await User.findOne({
+    $or: [{ username: req.body.username }, { email: req.body.email }],
+  });
   if (userExist)
-    return res
-      .status(403)
-      .json({ message: "a user with this email is already registered!" });
+    return res.status(403).json({
+      message: "a user with this email / username is already registered!",
+    });
 
   //HASH USER PASSWORD
   const salt = await bcrypt.genSalt(10);
@@ -21,8 +23,8 @@ const registerUser = async (req, res) => {
 
   //SAVE USER IN DATABASE
   const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
+    username: req.body.username.toLowerCase(),
+    email: req.body.email.toLowerCase(),
     password: hashedPassword,
   });
 

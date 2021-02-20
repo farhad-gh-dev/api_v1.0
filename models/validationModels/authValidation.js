@@ -3,8 +3,8 @@ const joi = require("joi");
 const register = (data) => {
   const schema = joi.object({
     username: joi.string().min(6).max(65).required(),
-    email: joi.string().min(6).max(65).email().required(),
-    password: joi.string().min(8).required(),
+    email: joi.string().min(3).max(254).email().required(),
+    password: joi.string().min(8).max(500).required(),
   });
 
   return schema.validate(data);
@@ -12,8 +12,8 @@ const register = (data) => {
 
 const login = (data) => {
   const schema = joi.object({
-    username: joi.string().min(6).max(65).required(),
-    password: joi.string().min(8).required(),
+    usernameOrEmail: joi.string().min(3).max(254).required(),
+    password: joi.string().min(8).max(500).required(),
   });
 
   return schema.validate(data);
