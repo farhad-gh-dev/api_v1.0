@@ -13,8 +13,6 @@ const verifyToken = (req, res, next) => {
     res.user = userCredentials;
     next();
   });
-
-  next();
 };
 
 module.exports = verifyToken;

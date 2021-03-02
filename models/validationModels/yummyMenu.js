@@ -23,12 +23,12 @@ const userInfo = (data) => {
   const schema = joi.object({
     username: joi.string().min(6).max(36).optional(),
     phone_number: joi
-      .number()
-      .pattern(/^\d{10}$/)
+      .string()
+      .regex(/^\d{10}$/)
       .optional(),
     address: joi
       .string()
-      .pattern(/^[a-zA-Z0-9\s,'-]*$/)
+      .regex(/^[a-zA-Z0-9\s,'-]*$/)
       .optional(),
   });
 
