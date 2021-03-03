@@ -21,7 +21,12 @@ const yummyMenuMenus = (data) => {
 
 const userInfo = (data) => {
   const schema = joi.object({
-    username: joi.string().min(6).max(36).optional(),
+    username: joi
+      .string()
+      .min(6)
+      .max(36)
+      .regex(/^[a-zA-Z0-9._-]+$/)
+      .optional(),
     phone_number: joi
       .string()
       .regex(/^\d{10}$/)

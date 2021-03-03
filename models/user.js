@@ -14,6 +14,7 @@ const userModel = new mongoose.Schema({
     max: 254,
     unique: true,
     required: true,
+    immutable: true,
   },
   password: {
     type: String,
@@ -21,13 +22,21 @@ const userModel = new mongoose.Schema({
     max: 500,
     required: true,
   },
+  role: {
+    type: String,
+    default: "user",
+  },
+  phone_number: {
+    type: Number,
+    default: 0,
+  },
+  address: {
+    type: String,
+    default: "",
+  },
   date: {
     type: Date,
     default: Date.now,
-  },
-  rule: {
-    type: "string",
-    default: "user",
   },
 });
 
