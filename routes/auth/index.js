@@ -4,11 +4,12 @@ const verifyToken = require("../../middlewares/verifyToken");
 
 const registerUser = require("./register");
 const loginUser = require("./login");
+const userInfo = require("./userInfo");
+const passwordReset = require("./passwordReset");
 
 route.post("/register", registerUser);
 route.post("/login", loginUser);
-route.get("/user", verifyToken, (req, res) => {
-  res.json({ result: res.user });
-});
+route.get("/user", verifyToken, userInfo);
+route.post("/password-reset", verifyToken, passwordReset);
 
 module.exports = route;

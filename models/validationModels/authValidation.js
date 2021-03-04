@@ -19,7 +19,22 @@ const login = (data) => {
   return schema.validate(data);
 };
 
+const passwordReset = (data) => {
+  const schema = joi.object({
+    password: joi.string().min(8).max(500).required(),
+    new_password: joi
+      .string()
+      .min(3)
+      .max(254)
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/)
+      .required(),
+  });
+
+  return schema.validate(data);
+};
+
 module.exports = {
   register,
   login,
+  passwordReset,
 };
