@@ -8,7 +8,7 @@ const passwordReset = async (req, res) => {
   const { error } = authValidation.passwordReset(req.body);
   if (error) return res.status(400).json({ message: error.message });
 
-  if (req.body.password === req.body.new_password)
+  if (req.body.password === req.body.newPassword)
     return res.status(400).json({ message: "New password is required." });
 
   //CHECK IF USER EXIST
@@ -27,7 +27,7 @@ const passwordReset = async (req, res) => {
 
     //HASH NEW USER PASSWORD
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.new_password, salt);
+    const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
 
     //SAVE NEW PASSWORD IN DATABASE
     const userWithNewPassword = await User.findOneAndUpdate(

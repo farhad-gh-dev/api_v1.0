@@ -22,7 +22,7 @@ const login = (data) => {
 const passwordReset = (data) => {
   const schema = joi.object({
     password: joi.string().min(8).max(500).required(),
-    new_password: joi
+    newPassword: joi
       .string()
       .min(3)
       .max(254)
