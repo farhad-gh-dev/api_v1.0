@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
 
     //GENERATE TOKEN
     const token = jwt.sign(
-      { id: savedUser._id },
+      { id: savedUser._id, username: savedUser.username },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "48h" }
     );

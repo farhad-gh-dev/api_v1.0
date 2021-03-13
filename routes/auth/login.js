@@ -23,9 +23,13 @@ const loginUser = async (req, res) => {
     return res.status(401).json({ message: "Authentication Failed." });
 
   //GENERATE TOKEN
-  const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "48h",
-  });
+  const token = jwt.sign(
+    { id: user._id, username: user.username },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: "48h",
+    }
+  );
 
   res.status(201).json({ message: "User logged in.", token });
 };

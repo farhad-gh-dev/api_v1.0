@@ -1,5 +1,5 @@
 const User = require("../../models/user");
-const yummyMenuValidation = require("../../models/validationModels/yummyMenu");
+const authValidation = require("../../models/validationModels/authValidation");
 
 const updateUser = async (req, res) => {
   const reqParamsArr = Object.keys(req.body);
@@ -9,7 +9,7 @@ const updateUser = async (req, res) => {
     return res.status(400).json({ message: "Empty request body" });
 
   //DATA VALIDATION: USERNAME / PHONE NUMBER / ADDRESS
-  const { error } = yummyMenuValidation.userInfo(req.body);
+  const { error } = authValidation.userInfo(req.body);
   if (error) return res.status(403).json({ message: error.message });
 
   //CHECK IF USERNAME IS ALREADY TAKEN

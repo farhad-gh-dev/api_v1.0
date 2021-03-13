@@ -19,22 +19,10 @@ const yummyMenuMenus = (data) => {
   return schema.validate(data);
 };
 
-const userInfo = (data) => {
+const yummyMenuOrder = (data) => {
   const schema = joi.object({
-    username: joi
-      .string()
-      .min(6)
-      .max(36)
-      .regex(/^[a-zA-Z0-9._-]+$/)
-      .optional(),
-    phone_number: joi
-      .string()
-      .regex(/^\d{10}$/)
-      .optional(),
-    address: joi
-      .string()
-      .regex(/^[a-zA-Z0-9\s,'-]*$/)
-      .optional(),
+    restaurantId: joi.string().required(),
+    order: joi.array().items(joi.string().required()),
   });
 
   return schema.validate(data);
@@ -42,5 +30,5 @@ const userInfo = (data) => {
 
 module.exports = {
   yummyMenuMenus,
-  userInfo,
+  yummyMenuOrder,
 };
