@@ -22,7 +22,7 @@ const yummyMenuMenus = (data) => {
 const yummyMenuOrder = (data) => {
   const schema = joi.object({
     restaurantId: joi.string().required(),
-    order: joi.array().items(joi.string().required()),
+    order: joi.array().items(joi.object()),
   });
 
   return schema.validate(data);

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const yummyMenuOrderModel = new mongoose.Schema({
-  restaurantName: {
+  restaurantId: {
     type: String,
     min: 4,
     max: 65,
@@ -9,7 +9,7 @@ const yummyMenuOrderModel = new mongoose.Schema({
   },
   order: [
     {
-      type: String,
+      type: Object,
       required: true,
     },
   ],
