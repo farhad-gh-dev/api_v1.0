@@ -12,6 +12,9 @@ const updateUser = async (req, res) => {
   const { error } = authValidation.userInfo(req.body);
   if (error) return res.status(403).json({ message: error.message });
 
+  //LOWERCASE USERNAME
+  req.body.username = req.body.username.toLowerCase();
+
   //CHECK IF USERNAME IS ALREADY TAKEN
   if (reqParamsArr.includes("username")) {
     try {
