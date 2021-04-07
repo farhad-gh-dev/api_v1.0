@@ -3,12 +3,6 @@ const User = require("../../models/user");
 const bcrypt = require("bcryptjs");
 
 const passwordReset = async (req, res) => {
-  //CHECK IF TARGET USER IS GUEST USER
-  if (res.user.id === "60326838c2fc7c03dc0be81f")
-    return res
-      .status(403)
-      .json({ message: "guest user info can not be modified" });
-
   //DATA VALIDATION
   const { error } = authValidation.passwordReset(req.body);
   if (error) return res.status(400).json({ message: error.message });

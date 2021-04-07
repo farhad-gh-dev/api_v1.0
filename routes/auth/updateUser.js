@@ -2,12 +2,6 @@ const User = require("../../models/user");
 const authValidation = require("../../models/validationModels/authValidation");
 
 const updateUser = async (req, res) => {
-  //CHECK IF TARGET USER IS GUEST USER
-  if (res.user.id === "60326838c2fc7c03dc0be81f")
-    return res
-      .status(403)
-      .json({ message: "guest user info can not be modified" });
-
   const reqParamsArr = Object.keys(req.body);
 
   //CHECK IF BODY IS EMPTY
