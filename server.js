@@ -10,6 +10,7 @@ server.use(cors());
 const indexRoute = require("./routes/index");
 const authRoute = require("./routes/auth/index");
 const YummyMenuRoute = require("./routes/yummyMenu/index");
+const olympusRoute = require("./routes/olympus/index");
 
 const PORT = process.env.PORT || 8000;
 
@@ -21,6 +22,7 @@ server.use(express.urlencoded({ extended: false }));
 server.use("/", indexRoute);
 server.use("/auth", authRoute);
 server.use("/yummy-menu", YummyMenuRoute);
+server.use("/olympus", olympusRoute);
 
 //DATABASE SETUP
 const uri = process.env.DB_ADDRESS;
