@@ -9,6 +9,21 @@ const quote = (data) => {
   return schema.validate(data);
 };
 
+const god = (data) => {
+  const schema = joi.object({
+    name: joi.string().min(3).max(50).required(),
+    categories: joi.array().items(
+      joi.object({
+        title: joi.string().min(3).max(50).required(),
+        description: joi.string().min(100).required(),
+      })
+    ),
+  });
+
+  return schema.validate(data);
+};
+
 module.exports = {
   quote,
+  god,
 };

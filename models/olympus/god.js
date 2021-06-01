@@ -8,13 +8,23 @@ const godModel = new mongoose.Schema({
     lowercase: true,
     required: true,
   },
-  info: {
-    type: String,
-    min: 10,
-    max: 300,
-    lowercase: true,
-    required: true,
-  },
+  categories: [
+    {
+      title: {
+        type: String,
+        min: 3,
+        max: 50,
+        required: true,
+        lowercase: true,
+      },
+      description: {
+        type: String,
+        min: 100,
+        required: true,
+        lowercase: true,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
