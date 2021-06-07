@@ -8,6 +8,11 @@ const godModel = new mongoose.Schema({
     lowercase: true,
     required: true,
   },
+  index: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   categories: [
     {
       title: {
