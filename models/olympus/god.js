@@ -8,7 +8,7 @@ const godModel = new mongoose.Schema({
     lowercase: true,
     required: true,
   },
-  index: {
+  godIndex: {
     type: Number,
     required: true,
     unique: true,

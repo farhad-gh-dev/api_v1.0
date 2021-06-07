@@ -9,6 +9,7 @@ const registerGod = async (req, res) => {
 
   const newGod = new GodModel({
     name: req.body.name,
+    godIndex: req.body.godIndex,
     categories: req.body.categories,
   });
 

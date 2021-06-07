@@ -12,7 +12,7 @@ const quote = (data) => {
 const god = (data) => {
   const schema = joi.object({
     name: joi.string().min(3).max(50).required(),
-    index: joi.number().required(),
+    godIndex: joi.number().required(),
     categories: joi.array().items(
       joi.object({
         title: joi.string().min(3).max(50).required(),
