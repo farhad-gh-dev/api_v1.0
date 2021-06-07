@@ -7,6 +7,7 @@ const godModel = new mongoose.Schema({
     max: 50,
     lowercase: true,
     required: true,
+    unique: true,
   },
   godIndex: {
     type: Number,

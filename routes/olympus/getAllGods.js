@@ -2,7 +2,7 @@ const GodModel = require("../../models/olympus/god");
 
 const getAllGods = async (req, res) => {
   try {
-    const response = await GodModel.find({}, "name");
+    const response = await GodModel.find({}, "name", { sort: { godIndex: 1 } });
 
     if (!response)
       return res
