@@ -1,9 +1,11 @@
 const MenuModel = require("../../models/yummyMenu/yummeMenuMenus");
 
 const getMenu = async (req, res) => {
+  //REQUEST BODY VALIDATION
   if (!req.params.restaurantName)
     return res.json({ message: "request is missing restaurant name." });
 
+  //GET MENU IN DB
   try {
     const response = await MenuModel.findOne({
       restaurantName: req.params.restaurantName,

@@ -6,13 +6,14 @@ const registerOrder = async (req, res) => {
   const { error } = yummyMenuValidation.yummyMenuOrder(req.body);
   if (error) return res.status(400).json({ message: error.message });
 
-  //ADD ORDER OBJ TO CLUSTER
+  //CREAT ORDER OBJECT
   const newOrder = new orderModel({
     userId: res.user.id,
     restaurantId: req.body.restaurantId,
     order: req.body.order,
   });
 
+  //SAVE ORDER IN DB
   try {
     const registeredOrder = await newOrder.save();
     if (!registeredOrder)

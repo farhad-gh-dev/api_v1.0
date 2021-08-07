@@ -12,6 +12,7 @@ const registerMenu = async (req, res) => {
     restaurantMenu: req.body.restaurantMenu,
   });
 
+  //SAVE NEW MENU IN DB
   try {
     const savedMenu = await newMenu.save();
     res.json({ result: savedMenu });
