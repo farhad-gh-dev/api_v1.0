@@ -7,12 +7,14 @@ const registerGod = async (req, res) => {
 
   if (error) return res.status(403).json({ message: error.message });
 
+  //CREATE GOD OBJECT
   const newGod = new GodModel({
     name: req.body.name,
     godIndex: req.body.godIndex,
     categories: req.body.categories,
   });
 
+  //SAVE GOD INFO OBJECT IN DB
   try {
     const savedGod = await newGod.save();
     res.json({ result: savedGod });

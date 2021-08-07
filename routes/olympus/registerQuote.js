@@ -7,11 +7,13 @@ const registerQuote = async (req, res) => {
 
   if (error) return res.status(403).json({ message: error.message });
 
+  //CREATE QUOTE OBJECT
   const newQuote = new QuoteModel({
     quote: req.body.quote,
     quotee: req.body.quotee,
   });
 
+  //SAVE QUOTE IN DB
   try {
     const savedQuote = await newQuote.save();
     res.json({ result: savedQuote });

@@ -1,13 +1,11 @@
 const QuoteModel = require("../../models/olympus/quote");
 
-const getMenu = async (req, res) => {
+const getQuotes = async (req, res) => {
   try {
     const response = await QuoteModel.find();
 
     if (!response)
-      return res
-        .status(400)
-        .json({ message: "Menu was not found for this restaurant" });
+      return res.status(400).json({ message: "No quote was found" });
 
     res.json(response);
   } catch (error) {
@@ -15,4 +13,4 @@ const getMenu = async (req, res) => {
   }
 };
 
-module.exports = getMenu;
+module.exports = getQuotes;

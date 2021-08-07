@@ -7,7 +7,7 @@ const getEachGod = async (req, res) => {
     if (!response)
       return res
         .status(400)
-        .json({ message: "Menu was not found for this restaurant" });
+        .json({ message: "No information was found for this god" });
 
     res.json(response);
   } catch (error) {
