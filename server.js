@@ -8,6 +8,7 @@ server.use(cors());
 
 //IMPORT ROUTES
 const indexRoute = require("./routes/index");
+const emailRoute = require("./routes/email/index");
 const authRoute = require("./routes/auth/index");
 const YummyMenuRoute = require("./routes/yummyMenu/index");
 const olympusRoute = require("./routes/olympus/index");
@@ -20,6 +21,7 @@ server.use(express.urlencoded({ extended: false }));
 
 //USE ROUTES
 server.use("/", indexRoute);
+server.use("/email", emailRoute);
 server.use("/auth", authRoute);
 server.use("/yummy-menu", YummyMenuRoute);
 server.use("/olympus", olympusRoute);
