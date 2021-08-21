@@ -15,7 +15,7 @@ const emailModel = new mongoose.Schema({
   },
   location: {
     type: String,
-    min: 3,
+    min: 0,
     max: 95,
   },
   message: {
